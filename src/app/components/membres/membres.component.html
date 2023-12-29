@@ -1,0 +1,11 @@
+<main class="home">
+    <H1 class="logo">Liste des membres</H1>
+    <section>
+        <div>
+            <button *ngFor="let name of names">{{ name }}</button>
+        </div>
+        <button (click)="addName()">Ajouter un membre</button>
+
+    </section>
+
+</main>

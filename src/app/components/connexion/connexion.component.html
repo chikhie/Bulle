@@ -1,0 +1,23 @@
+<main class="connexion">
+    <H1 class="logo">VBALL</H1>
+    <form>
+        <h2>Se connecter</h2>
+        <ul>
+            <li>
+                <Label>Pseudo/Mail</Label>
+                <input type="text" id="Pseudo" [(ngModel)]="pseudo" [ngModelOptions]="{standalone: true}" />
+            </li>
+            <li>
+                <Label>Mot de passe</Label>
+                <input type="password" />
+            </li>
+
+        </ul>
+        <div class="test">
+            {{pseudo}}
+        </div>
+        <button type="button" (click)="redirect()">Se connecter</button>
+    </form>
+
+
+</main>

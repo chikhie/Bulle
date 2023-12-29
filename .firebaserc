@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "vbulle"
+  },
+  "targets": {
+    "vbulle": {
+      "hosting": {
+        "bulle": [
+          "vbulle"
+        ]
+      }
+    }
+  }
+}

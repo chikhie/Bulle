@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-
+import { HomeComponent } from './components/home/home.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { HomeSessionComponent } from './components/home-session/home-session.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet,HomeComponent,ConnexionComponent,HomeSessionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Bulle';
+  title = 'VBulle';
 }
