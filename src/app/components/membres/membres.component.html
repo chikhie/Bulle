@@ -4,8 +4,10 @@
         <div>
             <button *ngFor="let name of names">{{ name }}</button>
         </div>
-        <button (click)="addName()">Ajouter un membre</button>
-
+        <button (click)="openModal(modalTemplate)">Ajouter un membre</button>
     </section>
-
 </main>
+
+<ng-template #modalTemplate>
+    <div>test</div>
+</ng-template>

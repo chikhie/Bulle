@@ -1,30 +1,39 @@
 // add-membre.component.ts
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { NgModel } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MembreService } from '../../services/membre.service';
+import { HttpClient } from '@angular/common/http';
+import { DataService } from '../../services/data.service';
+import{AngularFirestore}from '@angular/fire/compat/firestore'
+
 
 @Component({
   selector: 'app-add-membre',
+  standalone: true,
   styleUrls: ['./add-membre.component.scss'],
   templateUrl: './add-membre.component.html',
+  imports: [CommonModule],
 })
-export class AddMembreComponent {
+export class AddMembreComponent implements OnInit {
   nom: any;
-  prenom: any;
-  telephone: any;
+  message!: string;
 
+  saveData(){
+    const url = ""
+  }
   constructor(
-    public dialogRef: MatDialogRef<AddMembreComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+    private membre:MembreService, 
+    private data:DataService,
+    private afs : AngularFirestore){
+  }
+
+  ngOnInit(): void {
+    this.membre.currentMessage.subscribe(message=>this.message = message)
+  }
 
   onSubmit(): void {
-    const newMember = {
-      nom: this.nom,
-      prenom: this.prenom,
-      telephone: this.telephone,
-    };
+    this.afs.createId()
 
-    this.dialogRef.close(newMember);
   }
+
 }

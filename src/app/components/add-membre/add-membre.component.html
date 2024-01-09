@@ -1,8 +1,6 @@
 <!-- add-membre.component.html -->
 <h2>Ajouter un membre</h2>
-<form (ngSubmit)="onSubmit()">
-    <input [(ngModel)]="nom" name="nom" placeholder="Nom" required />
-    <input [(ngModel)]="prenom" name="prenom" placeholder="Prénom" required />
-    <input [(ngModel)]="telephone" name="telephone" placeholder="Téléphone" required />
-    <button type="submit" mat-button>Ajouter</button>
+<form>
+    <input  name="nom" placeholder="Nom" required />
+    <button (click)="onSubmit">Ajouter</button>
 </form>

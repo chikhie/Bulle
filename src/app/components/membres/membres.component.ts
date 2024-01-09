@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, TemplateRef, OnInit,ViewChild, AfterViewInit, OnChanges, SimpleChanges, } from '@angular/core';
 import { AddMembreComponent } from '../add-membre/add-membre.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -10,22 +10,21 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './membres.component.html',
   styleUrl: './membres.component.scss'
 })
-export class MembresComponent {
-  names: string[] = ["Idris","Imran"];
+export class MembresComponent implements AfterViewInit {
+  @ViewChild(AddMembreComponent) popup: any;
+  names: string[] = ["Idris","Imran","Ibrahim"];
+  newPlayer :any;
+  constructor(private dialog: MatDialog) {
+  }
+  ngAfterViewInit(): void {
 
-  constructor(private dialog: MatDialog) {}
-
-  addName() {
-    const dialogRef = this.dialog.open(AddMembreComponent);
-
-    dialogRef.afterClosed().subscribe((result: { prenom: any; nom: any; }) => {
-
-      console.log(result.prenom)
-      if (result) {
-        // Process the result if needed
-        this.names.push(`${result.prenom}`);
-      }
-    });
+  }
+  getNewPlayer($event: any){
+    console.log($event);
+    this.names.push($event);
   }
 
+  openModal(modalTemplate: TemplateRef<any>){
+    this.dialog.open(AddMembreComponent);
+  }
 }
