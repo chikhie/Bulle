@@ -1,13 +1,24 @@
 <main class="home">
-    <H1 class="logo">Liste des membres</H1>
     <section>
-        <div>
-            <button *ngFor="let name of names">{{ name }}</button>
+        <H1 class="logo">Liste des membres</H1>
+        <div class="membres">
+            <button *ngFor="let membre of membres$ | async">{{ membre.prenom }}</button>
         </div>
-        <button (click)="openModal(modalTemplate)">Ajouter un membre</button>
+        <form #f="ngForm" (ngSubmit)="send(f)">
+            <div>
+                <label for="pseudo">Pseudo</label>
+                <input type="text" name="pseudo" ngModel>
+            </div>
+            <div>
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" ngModel>
+            </div>
+            <div>
+                <label for="prenom">Prénom</label>
+                <input type="text" name="prenom" ngModel>
+            </div>
+            <button type="submit">Ajouter un membre</button>
+        </form>
     </section>
 </main>
-
-<ng-template #modalTemplate>
-    <div>test</div>
-</ng-template>
+<app-nav-bar></app-nav-bar>

@@ -1,25 +1,18 @@
 {
-  "hosting": [
-    {
-      "public": "public",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    },
-    {
-      "target": "bulle",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ],
+  "hosting": {
+    "public": "dist/bulle/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
   "database": {
     "rules": "database.rules.json"
   }

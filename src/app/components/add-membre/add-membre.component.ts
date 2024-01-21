@@ -1,39 +1,49 @@
 // add-membre.component.ts
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, Inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MembreService } from '../../services/membre.service';
-import { HttpClient } from '@angular/common/http';
 import { DataService } from '../../services/data.service';
-import{AngularFirestore}from '@angular/fire/compat/firestore'
-
+import { addDoc, collection} from "firebase/firestore"; 
+import { Firestore } from '@angular/fire/firestore';
+import { FormsModule } from '@angular/forms';
+import{AngularFirestore}from '@angular/fire/compat/firestore';
+import { MatDialog, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-membre',
   standalone: true,
   styleUrls: ['./add-membre.component.scss'],
   templateUrl: './add-membre.component.html',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
 })
 export class AddMembreComponent implements OnInit {
   nom: any;
   message!: string;
-
-  saveData(){
-    const url = ""
-  }
+  formulaire = new FormsModule();
   constructor(
-    private membre:MembreService, 
+    private firestore:Firestore,
     private data:DataService,
-    private afs : AngularFirestore){
+    private afs : AngularFirestore,
+    public dialogRef: MatDialogRef<AddMembreComponent>,
+   ){}
+  
+   saveData(){
+    const url = ""
   }
 
   ngOnInit(): void {
-    this.membre.currentMessage.subscribe(message=>this.message = message)
   }
-
-  onSubmit(): void {
-    this.afs.createId()
-
+  onTest(){
+    console.log("ça marche");
+  }
+  onSubmit(f:any): void {
+    const  collectionInstance = collection(this.firestore, 'users');
+    addDoc(collectionInstance, f.value)
+    .then(()=>{
+      console.log('Data Saved Successfully');
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
 
 }

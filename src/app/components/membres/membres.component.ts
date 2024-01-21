@@ -1,30 +1,41 @@
 import { CommonModule } from '@angular/common';
-import { Component, TemplateRef, OnInit,ViewChild, AfterViewInit, OnChanges, SimpleChanges, } from '@angular/core';
-import { AddMembreComponent } from '../add-membre/add-membre.component';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, inject} from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Firestore, collectionData } from '@angular/fire/firestore';
+import { addDoc,collection } from 'firebase/firestore';
+import { Observable } from 'rxjs';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
+interface Membres{
+  nom:string,
+  prenom:string,
+  phone:string,
+}
 @Component({
   selector: 'app-membres',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule,NavBarComponent],
   templateUrl: './membres.component.html',
   styleUrl: './membres.component.scss'
 })
-export class MembresComponent implements AfterViewInit {
-  @ViewChild(AddMembreComponent) popup: any;
-  names: string[] = ["Idris","Imran","Ibrahim"];
-  newPlayer :any;
-  constructor(private dialog: MatDialog) {
-  }
-  ngAfterViewInit(): void {
 
-  }
-  getNewPlayer($event: any){
-    console.log($event);
-    this.names.push($event);
-  }
 
-  openModal(modalTemplate: TemplateRef<any>){
-    this.dialog.open(AddMembreComponent);
+export class MembresComponent{
+  membre : any;
+  firestore:Firestore = inject(Firestore);
+  membres$ = collectionData(collection(this.firestore,'Membres')) as Observable<Membres[]>;
+  
+  send(f:NgForm){
+    this.membre = f;
+    this.saveData();
+    f.reset();
+  }
+  saveData(){
+    const acollection = collection(this.firestore,'Membres');
+    addDoc(acollection,{
+      'nom' : this.membre.value.nom,
+      'prenom' : this.membre.value.prenom,
+      'pseudo' : this.membre.value.pseudo,
+    });
   }
 }
