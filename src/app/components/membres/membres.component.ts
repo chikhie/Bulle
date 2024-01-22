@@ -5,6 +5,7 @@ import { Firestore, collectionData } from '@angular/fire/firestore';
 import { addDoc,collection } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { HeaderComponent } from '../header/header.component';
 
 interface Membres{
   nom:string,
@@ -14,7 +15,7 @@ interface Membres{
 @Component({
   selector: 'app-membres',
   standalone: true,
-  imports: [CommonModule,FormsModule,NavBarComponent],
+  imports: [CommonModule,FormsModule,NavBarComponent,HeaderComponent],
   templateUrl: './membres.component.html',
   styleUrl: './membres.component.scss'
 })
@@ -24,7 +25,7 @@ export class MembresComponent{
   membre : any;
   firestore:Firestore = inject(Firestore);
   membres$ = collectionData(collection(this.firestore,'Membres')) as Observable<Membres[]>;
-  
+  header:string = "Membres"
   send(f:NgForm){
     this.membre = f;
     this.saveData();

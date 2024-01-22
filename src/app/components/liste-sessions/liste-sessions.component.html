@@ -1,0 +1,7 @@
+<body>
+    <app-header [titre]="header"></app-header>
+    <div class="sessions">
+        <button *ngFor="let session of liste" (click)="onClickNavigateWithData(session.toDate())">{{ session.toDate() | date:'dd MMMM yyyy' }}</button>
+    </div>
+    <app-nav-bar class="navbar"></app-nav-bar>
+</body>

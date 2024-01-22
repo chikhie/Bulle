@@ -1,51 +1,53 @@
 <body>
-<main class="home">
-    <H1 class="logo">VBALL</H1>
-    <form class="equipes" #f="ngForm" (ngSubmit)="close()">
-        <section>
-            <h2>Equipe 1</h2>
-            <div>
-                <input type="text" name="0" ngModel (ngModelChange)="update()" [(ngModel)]="players[0]" >
-                <input type="text" name="1" ngModel (ngModelChange)="update()" [(ngModel)]="players[1]">
-                <input type="text" name="2" ngModel (ngModelChange)="update()" [(ngModel)]="players[2]">
-                <input type="text" name="3" ngModel (ngModelChange)="update()" [(ngModel)]="players[3]">
-                <input type="text" name="4" ngModel (ngModelChange)="update()" [(ngModel)]="players[4]">
-            </div>
-        </section>
-        <section class="red">
-            <h2>Equipe 2</h2>
-            <div>
-                <input type="text" name="5" ngModel (ngModelChange)="update()" [(ngModel)]="players[5]">
-                <input type="text" name="6" ngModel (ngModelChange)="update()" [(ngModel)]="players[6]">
-                <input type="text" name="7" ngModel (ngModelChange)="update()" [(ngModel)]="players[7]">
-                <input type="text" name="8" ngModel (ngModelChange)="update()" [(ngModel)]="players[8]">
-                <input type="text" name="9" ngModel (ngModelChange)="update()" [(ngModel)]="players[9]">
-            </div>
-        </section>
-        <section class="cyan">
-            <h2>Equipe 3</h2>
-            <div>
-                <input type="text" name="10" ngModel (ngModelChange)="update()" [(ngModel)]="players[10]">
-                <input type="text" name="11" ngModel (ngModelChange)="update()" [(ngModel)]="players[11]">
-                <input type="text" name="12" ngModel (ngModelChange)="update()" [(ngModel)]="players[12]">
-                <input type="text" name="13" ngModel (ngModelChange)="update()" [(ngModel)]="players[13]">
-                <input type="text" name="14" ngModel (ngModelChange)="update()" [(ngModel)]="players[14]">
-            </div>
-        </section>
-        <section class="yellow">
-            <h2>Equipe 4</h2>
-            <div>
-                <input type="text" name="15" ngModel (ngModelChange)="update()" [(ngModel)]="players[15]">
-                <input type="text" name="16" ngModel (ngModelChange)="update()" [(ngModel)]="players[16]">
-                <input type="text" name="17" ngModel (ngModelChange)="update()" [(ngModel)]="players[17]">
-                <input type="text" name="18" ngModel (ngModelChange)="update()" [(ngModel)]="players[18]">
-                <input type="text" name="19" ngModel (ngModelChange)="update()" [(ngModel)]="players[19]">
-            </div>
-        </section>
-        <button type="submit" >Cloturer</button>
-    </form>
+    <app-header [titre]="header"></app-header>
+    <div class="date">{{receivedData| date:'dd MMMM yyyy' }}</div>
 
-</main>
-<app-nav-bar></app-nav-bar>
+    <main class="home">
+
+        <form class="equipes" #f="ngForm">
+            <section>
+                <h2>Equipe 1</h2>
+                <div>
+                    <input type="text" name="0" ngModel (ngModelChange)="update()" [(ngModel)]="players[0]">
+                    <input type="text" name="1" ngModel (ngModelChange)="update()" [(ngModel)]="players[1]">
+                    <input type="text" name="2" ngModel (ngModelChange)="update()" [(ngModel)]="players[2]">
+                    <input type="text" name="3" ngModel (ngModelChange)="update()" [(ngModel)]="players[3]">
+                    <input type="text" name="4" ngModel (ngModelChange)="update()" [(ngModel)]="players[4]">
+                </div>
+            </section>
+            <section class="red">
+                <h2>Equipe 2</h2>
+                <div>
+                    <input type="text" name="5" ngModel (ngModelChange)="update()" [(ngModel)]="players[5]">
+                    <input type="text" name="6" ngModel (ngModelChange)="update()" [(ngModel)]="players[6]">
+                    <input type="text" name="7" ngModel (ngModelChange)="update()" [(ngModel)]="players[7]">
+                    <input type="text" name="8" ngModel (ngModelChange)="update()" [(ngModel)]="players[8]">
+                    <input type="text" name="9" ngModel (ngModelChange)="update()" [(ngModel)]="players[9]">
+                </div>
+            </section>
+            <section class="cyan">
+                <h2>Equipe 3</h2>
+                <div>
+                    <input type="text" name="10" ngModel (ngModelChange)="update()" [(ngModel)]="players[10]">
+                    <input type="text" name="11" ngModel (ngModelChange)="update()" [(ngModel)]="players[11]">
+                    <input type="text" name="12" ngModel (ngModelChange)="update()" [(ngModel)]="players[12]">
+                    <input type="text" name="13" ngModel (ngModelChange)="update()" [(ngModel)]="players[13]">
+                    <input type="text" name="14" ngModel (ngModelChange)="update()" [(ngModel)]="players[14]">
+                </div>
+            </section>
+            <section class="yellow">
+                <h2>Equipe 4</h2>
+                <div>
+                    <input type="text" name="15" ngModel (ngModelChange)="update()" [(ngModel)]="players[15]">
+                    <input type="text" name="16" ngModel (ngModelChange)="update()" [(ngModel)]="players[16]">
+                    <input type="text" name="17" ngModel (ngModelChange)="update()" [(ngModel)]="players[17]">
+                    <input type="text" name="18" ngModel (ngModelChange)="update()" [(ngModel)]="players[18]">
+                    <input type="text" name="19" ngModel (ngModelChange)="update()" [(ngModel)]="players[19]">
+                </div>
+            </section>
+        </form>
+
+    </main>
+    <app-nav-bar></app-nav-bar>
 
 </body>

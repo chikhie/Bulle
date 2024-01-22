@@ -1,24 +1,24 @@
 <main class="home">
-  <H1 class="logo">VBALL</H1>
-  <form  #f="ngForm" (ngSubmit)="create(f)">
-    <h2>Organiser une session</h2>
-    <ul>
-      <li>
-        <Label>Date</Label>
-        <input type="date" name="date" ngModel/>
-      </li>
-      <li>
-        <Label>heure</Label>
-        <input type="time" name="heure" value="20:00" ngModel/>
-      </li>
-      <li>
-        <Label>Lieu</Label>
-        <input type="text" name="lieu" value="Hall Omnisport de Gérardchamps - Verviers" ngModel/>
-      </li>
-    </ul>
+    <app-header [titre]="header"></app-header>
 
-    <button type="submit">Créer la session</button>
-  </form>
+    <form #f="ngForm" (ngSubmit)="create(f)">
+        <h2>Organiser une session</h2>
+        <ul>
+            <li>
+                <Label>Date</Label>
+                <input type="date" name="date" ngModel={{defaultDate}} />
+            </li>
+            <li>
+                <Label>heure</Label>
+                <input type="time" name="heure" value="20:00" ngModel="20:00" />
+            </li>
+            <li>
+                <Label>Lieu</Label>
+                <input type="text" name="lieu" ngModel="Hall Omnisport de Gérardchamps - Verviers" />
+            </li>
+        </ul>
+        <div class="error" *ngIf="error!=empty">{{error}}</div>
+        <button type="submit">Créer la session</button>
+    </form>
+    <app-nav-bar class="navBar"></app-nav-bar>
 </main>
-
-<app-nav-bar></app-nav-bar>

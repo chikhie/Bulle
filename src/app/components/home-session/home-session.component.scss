@@ -1,11 +1,20 @@
-body{
+body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     background-color: #070a0f;
-
+    .date {
+        display: flex;
+        justify-content: center;
+        background-color: #04702B;
+        color: white;
+        font-size: 1.5em;
+        height: 40px;
+        letter-spacing: 3px;
+    }
 }
+
 .home {
     display: flex;
     justify-content: flex-start;
@@ -13,19 +22,13 @@ body{
     margin-top: 20px;
     margin-bottom: 20px;
     height: 100%;
-    padding-inline: 5%;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    .equipes{
+    .equipes {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-    }
-    h1 {
-        color: #00d647;
-        border-bottom: white solid 1px;
-        padding-bottom: 7px;
     }
     div {
         display: flex;
@@ -83,7 +86,6 @@ body{
                     border: none; // ou border: 0;
                 }
             }
-
         }
     }
     button {
