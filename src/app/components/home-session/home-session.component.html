@@ -4,28 +4,22 @@
 
     <main class="home">
 
-        <form class="equipes" #f="ngForm">
+        <form class="equipes" #f="ngForm" cdkDropListGroup>
             <section>
                 <h2>Equipe 1</h2>
-                <div>
-                    <input type="text" name="0" ngModel (ngModelChange)="update()" [(ngModel)]="players[0]">
-                    <input type="text" name="1" ngModel (ngModelChange)="update()" [(ngModel)]="players[1]">
-                    <input type="text" name="2" ngModel (ngModelChange)="update()" [(ngModel)]="players[2]">
-                    <input type="text" name="3" ngModel (ngModelChange)="update()" [(ngModel)]="players[3]">
-                    <input type="text" name="4" ngModel (ngModelChange)="update()" [(ngModel)]="players[4]">
+                <div cdkDropList [id]="equipe1" [cdkDropListDisabled]="isDropListDisabled" [cdkDropListData]="players.slice(0,5)" (cdkDropListDropped)="drop($event)">
+                    @for(i of [0,1,2,3,4];track i;){
+                    <input type="text" name="{{i}}" (ngModelChange)="update()" ngModel={{players[i]}} cdkDrag> }
                 </div>
             </section>
             <section class="red">
                 <h2>Equipe 2</h2>
-                <div>
-                    <input type="text" name="5" ngModel (ngModelChange)="update()" [(ngModel)]="players[5]">
-                    <input type="text" name="6" ngModel (ngModelChange)="update()" [(ngModel)]="players[6]">
-                    <input type="text" name="7" ngModel (ngModelChange)="update()" [(ngModel)]="players[7]">
-                    <input type="text" name="8" ngModel (ngModelChange)="update()" [(ngModel)]="players[8]">
-                    <input type="text" name="9" ngModel (ngModelChange)="update()" [(ngModel)]="players[9]">
+                <div cdkDropList [id]="equipe2" [cdkDropListData]="players.slice(5,10)" (cdkDropListDropped)="drop($event)">
+                    @for(j of [5,6,7,8,9];track j;){
+                    <input type="text" name="{{j}}" (ngModelChange)="update()" [(ngModel)]="players[j]" cdkDrag> }
                 </div>
             </section>
-            <section class="cyan">
+            <section class="cyan" cdkDropList>
                 <h2>Equipe 3</h2>
                 <div>
                     <input type="text" name="10" ngModel (ngModelChange)="update()" [(ngModel)]="players[10]">
@@ -35,7 +29,7 @@
                     <input type="text" name="14" ngModel (ngModelChange)="update()" [(ngModel)]="players[14]">
                 </div>
             </section>
-            <section class="yellow">
+            <section class="yellow" cdkDropList>
                 <h2>Equipe 4</h2>
                 <div>
                     <input type="text" name="15" ngModel (ngModelChange)="update()" [(ngModel)]="players[15]">
