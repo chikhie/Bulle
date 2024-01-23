@@ -3,15 +3,11 @@
     <section>
         <H1 class="logo">Liste des membres</H1>
         <div class="membres">
-            <button *ngFor="let membre of membres$ | async">{{ membre.prenom }}</button>
+            <button *ngFor="let membre of ListedMembres">{{  membre.nom }} {{  membre.prenom }}</button>
         </div>
 
     </section>
     <form #f="ngForm" (ngSubmit)="send(f)">
-        <div>
-            <label for="pseudo">Pseudo</label>
-            <input type="text" name="pseudo" ngModel>
-        </div>
         <div>
             <label for="nom">Nom</label>
             <input type="text" name="nom" ngModel>
@@ -19,6 +15,10 @@
         <div>
             <label for="prenom">Prénom</label>
             <input type="text" name="prenom" ngModel>
+        </div>
+        <div>
+            <label for="telephone">Téléphone</label>
+            <input type="text" name="phone" ngModel>
         </div>
         <button type="submit">Ajouter un membre</button>
     </form>

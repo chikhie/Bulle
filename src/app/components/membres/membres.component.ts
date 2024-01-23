@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject} from '@angular/core';
+import { Component, OnInit, inject} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { addDoc,collection } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { HeaderComponent } from '../header/header.component';
+import { map } from 'rxjs/operators';
 
 interface Membres{
   nom:string,
@@ -21,11 +22,20 @@ interface Membres{
 })
 
 
-export class MembresComponent{
+export class MembresComponent implements OnInit{
+
   membre : any;
   firestore:Firestore = inject(Firestore);
   membres$ = collectionData(collection(this.firestore,'Membres')) as Observable<Membres[]>;
-  header:string = "Membres"
+  ListedMembres:any[] = [];
+  header:string = "Membres";
+  ngOnInit(): void {
+    this.membres$.pipe(
+      map(membres => membres.sort((a, b) => a.nom.localeCompare(b.nom)))
+    ).subscribe(sortedMembres => {
+      this.ListedMembres = sortedMembres;
+    });
+  }
   send(f:NgForm){
     this.membre = f;
     this.saveData();
@@ -36,7 +46,7 @@ export class MembresComponent{
     addDoc(acollection,{
       'nom' : this.membre.value.nom,
       'prenom' : this.membre.value.prenom,
-      'pseudo' : this.membre.value.pseudo,
+      'phone' : this.membre.value.phone,
     });
   }
 }

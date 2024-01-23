@@ -3,38 +3,39 @@
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    background-color: #070a0f;
     height: 100%;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    overflow: scroll;
     app-header {
         width: 100%;
         margin-bottom: 30px;
     }
     h1 {
         align-self: center;
-        width: 320px;
+        width: 315.5px;
         color: #00d647;
         border-bottom: white solid 1px;
         padding-bottom: 7px;
     }
     section {
         width: 340px;
-        height: 370px;
+        height: 355px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         .membres {
             height: 100%;
-            width: 100%;
+            width: 315px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            padding-left: 0;
+            padding: 0px;
             list-style: none;
             overflow: scroll;
+            border: solid #04702B 1px;
             button {
                 font-size: large;
                 height: 50px;
@@ -43,7 +44,7 @@
                 font-weight: 700;
                 padding: 0;
                 padding-inline: 2px;
-                width: 95%;
+                width: 100%;
                 display: flex;
                 justify-content: center;
                 align-content: center;
@@ -51,20 +52,18 @@
                 font-size: 20px;
                 background-color: white;
                 color: green;
-                margin-top: 0;
-                margin-bottom: 15px;
                 border: none;
-                border-radius: 15px;
+                border-bottom: solid #04702B 2px;
+                ;
             }
         }
-        border-bottom: solid white 2px;
     }
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        width: 340px;
+        width: 316px;
         padding-block: 15px;
         background-color: white;
         div {
@@ -112,4 +111,12 @@
     app-nav-bar {
         width: 100%;
     }
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: #070a0f;
 }
