@@ -38,6 +38,7 @@ export class HomeSessionComponent implements OnInit{
   receivedData = new Date(this.route.snapshot.paramMap.get('data')!);
   isDropListDisabled = false;
   constructor(public route: ActivatedRoute){}
+  
   async ngOnInit(): Promise<void> {
     let q:any;
     q = query(collection(this.firestore, 'Sessions'), where('date', '==', this.receivedData));
@@ -45,30 +46,25 @@ export class HomeSessionComponent implements OnInit{
     const querySnapshot = (await getDocs(q));
     const docRef = doc(this.firestore,'Sessions',querySnapshot.docs[0].id);
     this.players = (await (getDoc(docRef))).get('players');
-    console.log(this.players)
-  }
-  send(f:NgForm){
-    Object.keys(f.controls).forEach(controlName => {
-      const control = f.controls[controlName];
-      this.players.push(control.value);
-      
-    });
   }
 
-  async update(){
+  async update(j:number){
+    console.log(this.players[j])
     let q:any;
     q = query(collection(this.firestore, 'Sessions'), where('date', '==', this.receivedData));
  
     const querySnapshot = await getDocs(q);
 
     const docRef = doc(this.firestore,'Sessions',querySnapshot.docs[0].id);
-
+    // console.log(this.players)
+    // console.log("ça marche")
     updateDoc(docRef,{
       players: this.players,
     });
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    
     const target:number = parseInt(event.currentIndex + event.container.id);
     const origin:number = parseInt(event.previousIndex + event.previousContainer.id);
     this.isDropListDisabled = true;
@@ -80,12 +76,13 @@ export class HomeSessionComponent implements OnInit{
       this.isDropListDisabled = false;
     }, 1);
 
-
     console.log('Conteneur:', event.previousContainer.id);
     console.log('Indice origine:', origin);
 
     console.log('Conteneur:', event.container.id);
     console.log('Indice cible:', target);
+
+    this.update(0)
   }
   swapValues( index1: number, index2: number): void {
     // Vérifiez que les indices sont valides

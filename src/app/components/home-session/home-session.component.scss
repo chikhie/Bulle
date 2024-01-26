@@ -105,3 +105,9 @@ body {
         }
     }
 }
+
+.cdk-drag {
+    transition: none !important;
+  }
+.cdk-drop-list-preview {
+  }
